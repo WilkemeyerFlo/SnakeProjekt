@@ -1,0 +1,9 @@
+c:\users\florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\bin\Debug\SnakeProjekt.exe.config
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\bin\Debug\SnakeProjekt.exe
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\bin\Debug\SnakeProjekt.pdb
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.csprojResolveAssemblyReference.cache
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.FrmSnake.resources
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.Properties.Resources.resources
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.csproj.GenerateResource.Cache
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.exe
+C:\Users\Florian\documents\visual studio 2015\Projects\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.pdb
