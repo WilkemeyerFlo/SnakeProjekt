@@ -41,10 +41,10 @@ namespace SnakeProjekt
         public void CreatePoint()
         {
             int rndx = Randomint(1,pb_main.Width);
-            Thread.Sleep(123);
+            Thread.Sleep(Randomint(1,1000));
             int rndy = Randomint(1,pb_main.Height);
             g = pb_main.CreateGraphics();
-            g.FillRectangle(Brushes.Pink, rndx, rndy, 10, 10);
+            g.FillRectangle(Brushes.Pink, rndx-4, rndy-4, 10, 10);
         }
 
         private void Frm_Snake_KeyPress(object sender, KeyPressEventArgs e)
