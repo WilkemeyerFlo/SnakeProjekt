@@ -52,6 +52,8 @@
     <Compile Include="Frm_Snake.Designer.cs">
       <DependentUpon>Frm_Snake.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs" />
+    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Snake.cs" />
