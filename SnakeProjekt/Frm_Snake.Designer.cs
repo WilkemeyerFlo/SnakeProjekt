@@ -50,7 +50,6 @@
             this.Controls.Add(this.pb_main);
             this.Name = "FrmSnake";
             this.Text = "FrmSnake";
-            this.Load += new System.EventHandler(this.FrmSnake_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_main)).EndInit();
             this.ResumeLayout(false);
 

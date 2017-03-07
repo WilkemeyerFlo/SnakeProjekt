@@ -20,6 +20,7 @@ namespace SnakeProjekt
         int last_x;
         int last_y;
         List<string> positions;
+        int count = 0;
         public FrmSnake()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace SnakeProjekt
             Punkt = new Point();
             Spiel = new Game();
             positions = new List<string>();
-            string s = string.Format("{0}"+";"+"{1}", Schlange.headx,Schlange.heady);
+            string s = string.Format("{0}"+";"+"{1}"+":"+"{2}", Schlange.headx,Schlange.heady,count);
             positions.Add(s);
             last_x = Schlange.headx;
             last_y = Schlange.heady;
@@ -37,9 +38,16 @@ namespace SnakeProjekt
             g = pb_main.CreateGraphics();
             foreach (string position in positions)
             {
-                string[] data = position.Split(';');
-                g.FillRectangle(Brushes.Black, Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), 8, 8);
+                string[] data = position.Split(':');
+                if (data[1] == "0")
+                {
+                    CreatePoint();
+                    pb_main.BackColor = Color.White;
+                }
+                string[] data2 = data[0].Split(';');
+                g.FillRectangle(Brushes.Black, Convert.ToInt32(data2[0]), Convert.ToInt32(data2[1]), 8, 8);
             }
+
             g.FillRectangle(Brushes.White, last_x, last_y, 8, 8);
 
         }
@@ -86,19 +94,14 @@ namespace SnakeProjekt
         }
         private void move()
         {
-            string temp = Spiel.move_snake(Schlange.richtung, last_x, last_y);
+            string temp = Spiel.move_snake(Schlange.richtung, last_x, last_y, count);
 
             positions.Add(temp);
-            string[] data = temp.Split(';');
-            last_x = Convert.ToInt32(data[0]);
-            last_y = Convert.ToInt32(data[1]);
+            string[] data = temp.Split(':');
+            string[] data2 = data[0].Split(';');
+            last_x = Convert.ToInt32(data2[0]);
+            last_y = Convert.ToInt32(data2[1]);
             CreateSnake();
-        }
-
-        private void FrmSnake_Load(object sender, EventArgs e)
-        {
-            CreatePoint();
-            pb_main.BackColor = Color.White;
         }
     }
 }
