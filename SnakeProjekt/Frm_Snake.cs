@@ -35,13 +35,12 @@ namespace SnakeProjekt
         public void CreateSnake()
         {
             g = pb_main.CreateGraphics();
-            CreatePoint();
             foreach (string position in positions)
             {
                 string[] data = position.Split(';');
                 g.FillRectangle(Brushes.Black, Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), 8, 8);
             }
-            g.FillRectangle(Brushes.Gray, last_x, last_y, 8, 8);
+            g.FillRectangle(Brushes.White, last_x, last_y, 8, 8);
 
         }
 
@@ -94,6 +93,12 @@ namespace SnakeProjekt
             last_x = Convert.ToInt32(data[0]);
             last_y = Convert.ToInt32(data[1]);
             CreateSnake();
+        }
+
+        private void FrmSnake_Load(object sender, EventArgs e)
+        {
+            CreatePoint();
+            pb_main.BackColor = Color.White;
         }
     }
 }
