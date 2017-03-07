@@ -16,3 +16,12 @@ C:\Users\Florian\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProje
 C:\Users\Florian\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.FrmSnake.resources
 C:\Users\Florian\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.Properties.Resources.resources
 C:\Users\Florian\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.csproj.GenerateResource.Cache
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\bin\Debug\SnakeProjekt.exe.config
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\bin\Debug\SnakeProjekt.exe
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\bin\Debug\SnakeProjekt.pdb
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.csprojResolveAssemblyReference.cache
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.FrmSnake.resources
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.Properties.Resources.resources
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.csproj.GenerateResource.Cache
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.exe
+C:\Users\Oliver\Documents\GitHub\SnakeProjekt\SnakeProjekt\obj\Debug\SnakeProjekt.pdb
