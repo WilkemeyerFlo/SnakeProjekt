@@ -21,6 +21,7 @@ namespace SnakeProjekt
         int last_y;
         List<string> positions;
         int count = 0;
+        bool firsttime = true;
         public FrmSnake()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace SnakeProjekt
             positions.Add(s);
             last_x = Schlange.headx;
             last_y = Schlange.heady;
+            pb_main.BackColor = Color.White;
         }
         public void CreateSnake()
         {
@@ -39,22 +41,12 @@ namespace SnakeProjekt
             foreach (string position in positions)
             {
                 string[] data = position.Split(':');
-                if (data[1] == "0")
-                {
-                    CreatePoint();
-                    pb_main.BackColor = Color.White;
-                }
                 string[] data2 = data[0].Split(';');
                 g.FillRectangle(Brushes.Black, Convert.ToInt32(data2[0]), Convert.ToInt32(data2[1]), 8, 8);
             }
 
             g.FillRectangle(Brushes.White, last_x, last_y, 8, 8);
 
-        }
-
-        private void pb_main_Click(object sender, EventArgs e)
-        {
-            move();
         }
 
         public int Randomint(int min, int max)
@@ -65,33 +57,24 @@ namespace SnakeProjekt
 
         public void CreatePoint()
         {
-            int rndx = Randomint(1,pb_main.Width);
-            Thread.Sleep(Randomint(1,1000));
-            int rndy = Randomint(1,pb_main.Height);
+            int rndx = Randomint(1, pb_main.Width);
+            Thread.Sleep(Randomint(1, 1000));
+            int rndy = Randomint(1, pb_main.Height);
+            do
+            {
+                rndx++;
+                do
+                {
+                    rndy++;
+                } while ((rndy % pb_main.Height)!=0);
+            } while ((rndx % pb_main.Width) != 0);
             g = pb_main.CreateGraphics();
-            g.FillRectangle(Brushes.Pink, rndx-4, rndy-4, 8, 8);
+            g.FillRectangle(Brushes.Pink, rndx - 4, rndy - 4, 8, 8);
             Punkt.x = rndx;
             Punkt.y = rndy;
         }
 
-        private void Frm_Snake_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            switch (e.KeyChar)
-            {
-                case 'w':
-                    Schlange.richtung = 1;
-                    break;
-                case 'a':
-                    Schlange.richtung = 2;
-                    break;
-                case 's':
-                    Schlange.richtung = 3;
-                    break;
-                case 'd':
-                    Schlange.richtung = 4;
-                    break;
-            }
-        }
+
         private void move()
         {
             string temp = Spiel.move_snake(Schlange.richtung, last_x, last_y, count);
@@ -101,7 +84,37 @@ namespace SnakeProjekt
             string[] data2 = data[0].Split(';');
             last_x = Convert.ToInt32(data2[0]);
             last_y = Convert.ToInt32(data2[1]);
+
             CreateSnake();
+        }
+
+        private void pb_main_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    Schlange.richtung = 1;
+                    break;
+                case Keys.A:
+                    Schlange.richtung = 2;
+                    break;
+                case Keys.S:
+                    Schlange.richtung = 3;
+                    break;
+                case Keys.D:
+                    Schlange.richtung = 4;
+                    break;
+            }
+        }
+
+        private void tim_timer_Tick(object sender, EventArgs e)
+        {
+            if (firsttime == true)
+            {
+                CreatePoint();
+                firsttime = false;
+            }
+            move();
         }
     }
 }

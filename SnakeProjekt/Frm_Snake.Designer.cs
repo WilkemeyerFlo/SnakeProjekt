@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pb_main = new System.Windows.Forms.PictureBox();
+            this.tim_timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pb_main)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +42,13 @@
             this.pb_main.Size = new System.Drawing.Size(384, 362);
             this.pb_main.TabIndex = 0;
             this.pb_main.TabStop = false;
-            this.pb_main.Click += new System.EventHandler(this.pb_main_Click);
+            this.pb_main.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.pb_main_PreviewKeyDown);
+            // 
+            // tim_timer
+            // 
+            this.tim_timer.Enabled = true;
+            this.tim_timer.Interval = 450;
+            this.tim_timer.Tick += new System.EventHandler(this.tim_timer_Tick);
             // 
             // FrmSnake
             // 
@@ -50,6 +58,7 @@
             this.Controls.Add(this.pb_main);
             this.Name = "FrmSnake";
             this.Text = "FrmSnake";
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.pb_main_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pb_main)).EndInit();
             this.ResumeLayout(false);
 
@@ -58,6 +67,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pb_main;
+        private System.Windows.Forms.Timer tim_timer;
     }
 }
 

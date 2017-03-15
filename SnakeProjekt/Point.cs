@@ -8,11 +8,20 @@ namespace SnakeProjekt
 {
     class Point
     {
+        public int x { get; set; }
+        public int y { get; set; }
         public Point()
         {
 
         }
-        public int x { get; set; }
-        public int y { get; set; }
+
+        public bool check_point(int snake_x, int snake_y)
+        {
+            if (snake_x == x & snake_y == y)
+            {
+                return false;
+            }
+            return false;
+        }
     }
 }

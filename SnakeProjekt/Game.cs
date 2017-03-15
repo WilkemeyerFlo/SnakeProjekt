@@ -19,9 +19,9 @@ namespace SnakeProjekt
         }
         public string move_snake(int richtung, int x, int y, int count)
         {
-            if (richtung==1) y = y + 8;
+            if (richtung==1) y = y - 8;
             else if (richtung==2 ) x = x - 8;
-            else if (richtung==3) y = y - 8;
+            else if (richtung==3) y = y + 8;
             else if (richtung==4) x = x + 8;
             
             string s = string.Format("{0}" + ";" + "{1}" + ":" + "{2}", x, y, count);
