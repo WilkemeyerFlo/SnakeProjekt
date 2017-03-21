@@ -8,14 +8,14 @@ namespace SnakeProjekt
 {
     class Snake
     {
-        public int headx { get; private set; }
-        public int heady { get; private set; }
+        public int headx { get; set; }
+        public int heady { get; set; }
         public int richtung { get; set; }
         public Snake(int maxx, int maxy)
         {
             int x,y;
-            x = maxx / 2 - 3;
-            y = maxy / 2 - 3;
+            x = maxx / 2;
+            y = maxy / 2;
             richtung = 1;
             headx = x;
             heady = y;

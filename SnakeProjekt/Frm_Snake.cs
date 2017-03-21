@@ -20,6 +20,7 @@ namespace SnakeProjekt
         int last_x;
         int last_y;
         List<string> positions;
+        int last_list_remove_couter = 0;
         int count = 0;
         bool firsttime = true;
         public FrmSnake()
@@ -29,24 +30,20 @@ namespace SnakeProjekt
             Punkt = new Point();
             Spiel = new Game();
             positions = new List<string>();
-            string s = string.Format("{0}"+";"+"{1}"+":"+"{2}", Schlange.headx,Schlange.heady,count);
-            positions.Add(s);
             last_x = Schlange.headx;
             last_y = Schlange.heady;
+            string s = string.Format("{0}"+";"+"{1}"+":"+"{2}", Schlange.headx,Schlange.heady,count);
+            positions.Add(s);
+            count++;
             pb_main.BackColor = Color.White;
         }
         public void CreateSnake()
         {
             g = pb_main.CreateGraphics();
-            foreach (string position in positions)
-            {
+            string position = positions[count];
                 string[] data = position.Split(':');
                 string[] data2 = data[0].Split(';');
                 g.FillRectangle(Brushes.Black, Convert.ToInt32(data2[0]), Convert.ToInt32(data2[1]), 8, 8);
-            }
-
-            g.FillRectangle(Brushes.White, last_x, last_y, 8, 8);
-
         }
 
         public int Randomint(int min, int max)
@@ -60,8 +57,8 @@ namespace SnakeProjekt
             int rndx = Randomint(1, pb_main.Width);
             Thread.Sleep(Randomint(1, 1000));
             int rndy = Randomint(1, pb_main.Height);
-            rndx = rndx + (rndx % 4);
-            rndy = rndy + (rndy % 4);
+            rndx = (rndx - (rndx % 8)) +1;
+            rndy = (rndy - (rndy % 8)) -4;
             g = pb_main.CreateGraphics();
             g.FillRectangle(Brushes.Pink, rndx - 4, rndy - 4, 8, 8);
             Punkt.x = rndx;
@@ -80,6 +77,21 @@ namespace SnakeProjekt
             last_y = Convert.ToInt32(data2[1]);
 
             CreateSnake();
+            bool got_point = Spiel.get_dot(Schlange.headx,Schlange.heady,Punkt.x,Punkt.y);
+            count++;
+            if (got_point == false)
+            {
+                string temp2 = positions[last_list_remove_couter];
+                data = temp2.Split(':');
+                data2 = data[0].Split(';');
+                repaint(Convert.ToInt32(data2[0]),Convert.ToInt32(data2[1]));
+                positions.Remove(Convert.ToString(last_list_remove_couter));
+                last_list_remove_couter++;
+            }
+            else
+            {
+                
+            }
         }
 
         private void pb_main_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -109,6 +121,12 @@ namespace SnakeProjekt
                 firsttime = false;
             }
             move();
+        }
+
+        private void repaint(int x, int y)
+        {
+            g = pb_main.CreateGraphics();
+            g.FillRectangle(Brushes.White, x, y, 8, 8);
         }
     }
 }
