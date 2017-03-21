@@ -60,14 +60,8 @@ namespace SnakeProjekt
             int rndx = Randomint(1, pb_main.Width);
             Thread.Sleep(Randomint(1, 1000));
             int rndy = Randomint(1, pb_main.Height);
-            do
-            {
-                rndx++;
-                do
-                {
-                    rndy++;
-                } while ((rndy % pb_main.Height)!=0);
-            } while ((rndx % pb_main.Width) != 0);
+            rndx = rndx + (rndx % 4);
+            rndy = rndy + (rndy % 4);
             g = pb_main.CreateGraphics();
             g.FillRectangle(Brushes.Pink, rndx - 4, rndy - 4, 8, 8);
             Punkt.x = rndx;
