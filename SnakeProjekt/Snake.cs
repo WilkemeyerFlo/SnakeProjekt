@@ -14,7 +14,7 @@ namespace SnakeProjekt
         public Snake(int maxx, int maxy)
         {
             int x,y;
-            x = maxx / 2;
+            x = (maxx / 2) + 3;
             y = maxy / 2;
             richtung = 1;
             headx = x;

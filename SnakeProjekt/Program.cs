@@ -16,7 +16,7 @@ namespace SnakeProjekt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSnake());
+            Application.Run(new frm_start());
         }
     }
 }

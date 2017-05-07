@@ -55,12 +55,12 @@ namespace SnakeProjekt
         public void CreatePoint()
         {
             int rndx = Randomint(1, pb_main.Width);
-            Thread.Sleep(Randomint(1, 1000));
+            Thread.Sleep(Randomint(1, 50));
             int rndy = Randomint(1, pb_main.Height);
-            rndx = (rndx - (rndx % 8)) +1;
-            rndy = (rndy - (rndy % 8)) -4;
+            rndx = (rndx - (rndx % 8));
+            rndy = (rndy - (rndy % 8));
             g = pb_main.CreateGraphics();
-            g.FillRectangle(Brushes.Pink, rndx - 4, rndy - 4, 8, 8);
+            g.FillRectangle(Brushes.Pink, rndx, rndy, 8, 8);
             Punkt.x = rndx;
             Punkt.y = rndy;
         }
@@ -75,9 +75,12 @@ namespace SnakeProjekt
             string[] data2 = data[0].Split(';');
             last_x = Convert.ToInt32(data2[0]);
             last_y = Convert.ToInt32(data2[1]);
-
+            check_border();
+            //bool crashed = false;
+            //crashed = check_crash();
+            //if (crashed == true) game_over();
             CreateSnake();
-            bool got_point = Spiel.get_dot(Schlange.headx,Schlange.heady,Punkt.x,Punkt.y);
+            bool got_point = Spiel.get_dot(last_x,last_y,Punkt.x,Punkt.y);
             count++;
             if (got_point == false)
             {
@@ -90,7 +93,8 @@ namespace SnakeProjekt
             }
             else
             {
-                
+                CreatePoint();
+                tim_timer.Interval--;
             }
         }
 
@@ -99,15 +103,19 @@ namespace SnakeProjekt
             switch (e.KeyCode)
             {
                 case Keys.W:
-                    Schlange.richtung = 1;
+                    if (Schlange.richtung == 3) break;
+                    else Schlange.richtung = 1;
                     break;
                 case Keys.A:
-                    Schlange.richtung = 2;
+                    if (Schlange.richtung == 4) break;
+                    else Schlange.richtung = 2;
                     break;
                 case Keys.S:
-                    Schlange.richtung = 3;
+                    if (Schlange.richtung == 1) break;
+                    else Schlange.richtung = 3;
                     break;
                 case Keys.D:
+                    if (Schlange.richtung == 2) break;
                     Schlange.richtung = 4;
                     break;
             }
@@ -128,5 +136,38 @@ namespace SnakeProjekt
             g = pb_main.CreateGraphics();
             g.FillRectangle(Brushes.White, x, y, 8, 8);
         }
+        private void game_over()
+        {
+            tim_timer.Stop();
+            Close();
+            frm_start add = new frm_start();
+            this.Hide();
+            add.ShowDialog();
+        }
+        private void check_border()
+        {
+            if (last_x < 0 | last_x > 380 | last_y < 0 | last_y > 355)
+            {
+                game_over();
+            }
+        }
+        /*private bool check_crash()
+        {
+            string temp_string = positions[count];
+            positions.Remove(Convert.ToString(count));
+            positions.Remove(temp_string);
+            bool crash = false;
+            foreach (string position in positions)
+            {
+                string[] data = position.Split(':');
+                string[] data2 = data[0].Split(';');
+                if (Convert.ToInt32(data2[0]) == last_x && Convert.ToInt32(data2[1]) == last_y)
+                {
+                    crash = true;
+                }
+            }
+            positions.Add(temp_string);
+            return crash;
+        }*/
     }
 }

@@ -47,7 +47,7 @@
             // tim_timer
             // 
             this.tim_timer.Enabled = true;
-            this.tim_timer.Interval = 450;
+            this.tim_timer.Interval = 150;
             this.tim_timer.Tick += new System.EventHandler(this.tim_timer_Tick);
             // 
             // FrmSnake
